@@ -12,7 +12,7 @@
     }
 
     header {
-      background: url('https://f2.toyhou.se/file/f2-toyhou-se/images/100707323_D22BnkHOrHNAYJT.png') center/cover no-repeat;
+      background: url('shop-bg-placeholder.jpg') center/cover no-repeat;
       height: 200px;
       position: relative;
     }
@@ -29,7 +29,7 @@
     #character-box {
       position: relative;
       display: none;
-      background: url('https://f2.toyhou.se/file/f2-toyhou-se/images/100707342_0UA5CrI8iTOd3Eo.png') bottom center/cover no-repeat;
+      background: url('desk-image-placeholder.png') bottom center/cover no-repeat;
       border-top: 4px solid #a67c52;
       display: flex;
       align-items: flex-end;
@@ -88,7 +88,7 @@
 
     #desk-panel {
       padding: 10px;
-      background: url('https://f2.toyhou.se/file/f2-toyhou-se/images/100707519_L9KBqaIPcAGhvKS.png') center/cover no-repeat;
+      background: url('desk-image-placeholder.png') center/cover no-repeat;
       border-top: 2px solid #a67c52;
       display: flex;
       gap: 10px;
@@ -108,13 +108,13 @@
 <body>
 
   <header>
-    <img id="bell" src="https://f2.toyhou.se/file/f2-toyhou-se/images/100707573_5Uys675hzOHTgdG.png" alt="Ring bell" />
+    <img id="bell" src="bell-icon-placeholder.png" alt="Ring bell" />
   </header>
 
   <div id="character-box">
     <button id="close-btn" onclick="hideCharacter()">X</button>
     <div id="character-container">
-      <img id="character-img" src="https://f2.toyhou.se/file/f2-toyhou-se/images/100707655_DxrEtB29SCHgzqy.png" alt="Character" />
+      <img id="character-img" src="character-idle.png" alt="Character" />
     </div>
     <div id="chatbox"></div>
     <div id="question-panel">
@@ -142,23 +142,23 @@
 
     bell.addEventListener('click', () => {
       characterBox.style.display = 'flex';
-      characterImg.src = 'https://f2.toyhou.se/file/f2-toyhou-se/images/100707963_wM3Nbn6ICMnM318.png';
+      characterImg.src = 'character-pop-up.png';
       setTimeout(() => {
-        characterImg.src = 'https://f2.toyhou.se/file/f2-toyhou-se/images/100707655_DxrEtB29SCHgzqy.png';
+        characterImg.src = 'character-idle.png';
         typeText("Hello! I'm here to help you.");
       }, 400);
     });
 
     function hideCharacter() {
-      characterImg.src = 'https://f2.toyhou.se/file/f2-toyhou-se/images/100707873_9jjxCcTez975bX0.png';
+      characterImg.src = 'character-go-down.png';
       setTimeout(() => {
         characterBox.style.display = 'none';
-        characterImg.src = 'https://f2.toyhou.se/file/f2-toyhou-se/images/100707655_DxrEtB29SCHgzqy.png';
+        characterImg.src = 'character-idle.png';
       }, 400);
     }
 
     function typeText(text) {
-      characterImg.src = 'https://f2.toyhou.se/file/f2-toyhou-se/images/100707893_RxeM0n1wyFpnEBd.png';
+      characterImg.src = 'character-talking.png';
       chatbox.textContent = '';
       let i = 0;
       const interval = setInterval(() => {
@@ -167,7 +167,7 @@
           i++;
         } else {
           clearInterval(interval);
-          characterImg.src = 'https://f2.toyhou.se/file/f2-toyhou-se/images/100707655_DxrEtB29SCHgzqy.png';
+          characterImg.src = 'character-idle.png';
         }
       }, 40);
     }
