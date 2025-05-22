@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Shop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="header-scene">
+    <img src="background-placeholder.png" id="bg" />
+    <img src="desk-image-placeholder.png" id="desk" />
+    <button id="bell"><img src="bell-icon-placeholder.png" alt="bell" /></button>
+    <div id="character-container">
+      <img id="character" src="character-idle.gif" />
+      <div id="speech-bubble">
+        <p id="typed-text"></p>
+        <div id="options"></div>
+      </div>
+    </div>
+    <button id="close-btn">X</button>
+  </div>
+
+  <div id="info-panel">
+    <div class="desk-buttons">
+      <button class="info-btn" data-target="personal">Personal Info</button>
+      <button class="info-btn" data-target="offers">Types of Offers</button>
+      <button class="info-btn" data-target="examples">Examples</button>
+    </div>
+    <div id="content-area">
+      <div id="personal" class="content-section">This is personal information about the shop owner.</div>
+      <div id="offers" class="content-section">Here are the different types of offers available.</div>
+      <div id="examples" class="content-section">
+        Example 1<br><img src="example-image-placeholder.png" alt="Example" /><br>
+        Example video:<br><video controls><source src="example-video-placeholder.mp4" type="video/mp4"></video>
+      </div>
+    </div>
+    <button id="purchase-btn">Go to Purchase Page</button>
+  </div>
+
+  <audio id="ding-sound" src="ding.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
