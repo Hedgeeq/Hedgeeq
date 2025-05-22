@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Little Shop Guide</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f0e8;
+    }
+
+    header {
+      background: url('https://f2.toyhou.se/file/f2-toyhou-se/images/100707323_D22BnkHOrHNAYJT.png') center/cover no-repeat;
+      height: 200px;
+      position: relative;
+    }
+
+    #bell {
+      position: absolute;
+      top: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      cursor: pointer;
+    }
+
+    #character-box {
+      position: relative;
+      display: none;
+      background: url('https://f2.toyhou.se/file/f2-toyhou-se/images/100707342_0UA5CrI8iTOd3Eo.png') bottom center/cover no-repeat;
+      border-top: 4px solid #a67c52;
+      display: flex;
+      align-items: flex-end;
+      padding: 40px 20px 100px 20px;
+      position: relative;
+    }
+
+    #character-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin-right: 20px;
+    }
+
+    #character-img {
+      position: absolute;
+      bottom: 0;
+      width: 100px;
+      height: auto;
+      transition: all 0.3s ease;
+    }
+
+    #chatbox {
+      flex: 1;
+      background: #ffffff;
+      border: 2px solid #a67c52;
+      padding: 10px;
+      font-size: 1rem;
+      min-height: 60px;
+    }
+
+    #question-panel {
+      width: 150px;
+      border-left: 2px solid #a67c52;
+      padding-left: 10px;
+    }
+
+    #question-panel button {
+      display: block;
+      margin-bottom: 10px;
+      padding: 5px;
+      width: 100%;
+    }
+
+    #close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #a67c52;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+
+    #desk-panel {
+      padding: 10px;
+      background: url('https://f2.toyhou.se/file/f2-toyhou-se/images/100707519_L9KBqaIPcAGhvKS.png') center/cover no-repeat;
+      border-top: 2px solid #a67c52;
+      display: flex;
+      gap: 10px;
+    }
+
+    #desk-panel button {
+      padding: 5px 10px;
+    }
+
+    #main-info {
+      padding: 20px;
+      background: #fff;
+      min-height: 400px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img id="bell" src="https://f2.toyhou.se/file/f2-toyhou-se/images/100707573_5Uys675hzOHTgdG.png" alt="Ring bell" />
+  </header>
+
+  <div id="character-box">
+    <button id="close-btn" onclick="hideCharacter()">X</button>
+    <div id="character-container">
+      <img id="character-img" src="https://f2.toyhou.se/file/f2-toyhou-se/images/100707655_DxrEtB29SCHgzqy.png" alt="Character" />
+    </div>
+    <div id="chatbox"></div>
+    <div id="question-panel">
+      <button onclick="askQuestion('What is this place?')">What is this place?</button>
+      <button onclick="askQuestion('How do I buy something?')">How do I buy something?</button>
+    </div>
+  </div>
+
+  <div id="desk-panel">
+    <button onclick="changeContent('info')">Info</button>
+    <button onclick="changeContent('examples')">Examples</button>
+    <button onclick="changeContent('faq')">FAQ</button>
+  </div>
+
+  <div id="main-info">
+    <p>Welcome to the shop! Click the bell to talk to the shopkeeper.</p>
+  </div>
+
+  <script>
+    const bell = document.getElementById('bell');
+    const characterBox = document.getElementById('character-box');
+    const chatbox = document.getElementById('chatbox');
+    const mainInfo = document.getElementById('main-info');
+    const characterImg = document.getElementById('character-img');
+
+    bell.addEventListener('click', () => {
+      characterBox.style.display = 'flex';
+      characterImg.src = 'https://f2.toyhou.se/file/f2-toyhou-se/images/100707963_wM3Nbn6ICMnM318.png';
+      setTimeout(() => {
+        characterImg.src = 'https://f2.toyhou.se/file/f2-toyhou-se/images/100707655_DxrEtB29SCHgzqy.png';
+        typeText("Hello! I'm here to help you.");
+      }, 400);
+    });
+
+    function hideCharacter() {
+      characterImg.src = 'https://f2.toyhou.se/file/f2-toyhou-se/images/100707873_9jjxCcTez975bX0.png';
+      setTimeout(() => {
+        characterBox.style.display = 'none';
+        characterImg.src = 'https://f2.toyhou.se/file/f2-toyhou-se/images/100707655_DxrEtB29SCHgzqy.png';
+      }, 400);
+    }
+
+    function typeText(text) {
+      characterImg.src = 'https://f2.toyhou.se/file/f2-toyhou-se/images/100707893_RxeM0n1wyFpnEBd.png';
+      chatbox.textContent = '';
+      let i = 0;
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          chatbox.textContent += text[i];
+          i++;
+        } else {
+          clearInterval(interval);
+          characterImg.src = 'https://f2.toyhou.se/file/f2-toyhou-se/images/100707655_DxrEtB29SCHgzqy.png';
+        }
+      }, 40);
+    }
+
+    function askQuestion(text) {
+      typeText(text);
+    }
+
+    function changeContent(section) {
+      let content = '';
+      if (section === 'info') {
+        content = '<h2>Information</h2><p>This is your shop guide with everything you need to know.</p>';
+      } else if (section === 'examples') {
+        content = '<h2>Examples</h2><p>Here are some examples of what you can order.</p>';
+      } else if (section === 'faq') {
+        content = '<h2>FAQ</h2><p>Common questions and answers go here.</p>';
+      }
+      mainInfo.innerHTML = content;
+    }
+  </script>
+</body>
+</html>
