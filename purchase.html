@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Purchase</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .option {
+      flex: 1 1 calc(50% - 1rem);
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .option input[type="radio"] {
+      margin-bottom: 0.5rem;
+    }
+    button {
+      margin-top: 2rem;
+      padding: 0.75rem 2rem;
+      background: #0070ba;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005c99;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Purchase</h1>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="custom_name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="custom_email" required>
+
+      <div class="options">
+        <div class="option">
+          <input type="radio" id="option1" name="item_name" value="Option 1" required>
+          <label for="option1">Option 1 - $5</label>
+        </div>
+        <div class="option">
+          <input type="radio" id="option2" name="item_name" value="Option 2">
+          <label for="option2">Option 2 - $10</label>
+        </div>
+        <div class="option">
+          <input type="radio" id="option3" name="item_name" value="Option 3">
+          <label for="option3">Option 3 - $15</label>
+        </div>
+        <div class="option">
+          <input type="radio" id="option4" name="item_name" value="Option 4">
+          <label for="option4">Option 4 - $20</label>
+        </div>
+        <div class="option">
+          <input type="radio" id="option5" name="item_name" value="Option 5">
+          <label for="option5">Option 5 - $25</label>
+        </div>
+      </div>
+
+      <label for="notes">Additional Notes / Examples:</label>
+      <textarea id="notes" name="custom_notes" rows="4"></textarea>
+
+      <label for="file">Upload File:</label>
+      <input type="file" id="file" name="custom_file">
+
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="your-paypal-email@example.com">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="hidden" name="amount" value="5">
+
+      <button type="submit">Proceed to PayPal</button>
+    </form>
+  </div>
+</body>
+</html>
