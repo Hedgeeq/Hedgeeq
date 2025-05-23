@@ -1,60 +1,119 @@
-
 body {
+  background: #eaeaea;
   margin: 0;
   font-family: sans-serif;
-}
-#header-scene {
-  position: relative;
-  height: 400px;
-  background-color: #ccc;
-  overflow: hidden;
-}
-#bg, #desk {
-  width: 100%;
-  position: absolute;
-}
-#bell {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 5;
-}
-#character-container {
-  position: absolute;
-  bottom: 100px;
-  left: 20%;
-  display: none;
-}
-#speech-bubble {
-  position: absolute;
-  left: 120px;
-  top: -20px;
-  background: white;
-  padding: 10px;
-  border-radius: 10px;
-  width: 200px;
-}
-#options button {
-  display: block;
-  margin-top: 5px;
-}
-#close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-#info-panel {
-  padding: 20px;
-}
-.desk-buttons {
   display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
+  flex-direction: column;
+  align-items: center;
 }
-.content-section {
+
+.main-container {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.interactive-scene {
+  position: relative;
+  width: 700px;
+  height: 400px;
+  background: #fff;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.interactive-scene img {
+  position: absolute;
+  max-width: 100%;
+}
+
+.background {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.desk {
+  bottom: 0;
+  width: 100%;
+  height: auto;
+}
+
+.bell {
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  width: 40px;
+}
+
+.character {
+  bottom: 120px;
+  left: 60px;
+  width: 120px;
+}
+
+.speech-bubble {
+  left: 200px;
+  bottom: 180px;
+  width: 300px;
+}
+
+.options {
+  position: absolute;
+  left: 200px;
+  bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.options button {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+}
+
+.exit-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: #d33;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
   display: none;
 }
-#purchase-btn {
-  margin-top: 20px;
+
+.info-buttons {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.info-buttons button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: #4a90e2;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.info-buttons button:hover {
+  background: #357ab8;
 }
