@@ -35,5 +35,21 @@
       <button onclick="window.location.href='purchase.html'">Go to Purchase Page</button>
     </div>
   </div>
+<script>
+function triggerInteraction() {
+  document.getElementById("character").style.display = "block";
+  document.getElementById("speech").style.display = "block";
+  document.getElementById("options").style.display = "flex";
+  document.querySelector(".exit-button").style.display = "block";
+}
+
+function endInteraction() {
+  document.getElementById("character").style.display = "none";
+  document.getElementById("speech").style.display = "none";
+  document.getElementById("options").style.display = "none";
+  document.querySelector(".exit-button").style.display = "none";
+}
+</script>
+<script><audio id="ding-sound" src="ding.mp3" preload="auto"></audio> <script src="script.js"></script>
 </body>
 </html>
