@@ -8,38 +8,32 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="header-scene">
-    <img src="background-placeholder.png" id="bg" />
-    <img src="desk-image-placeholder.png" id="desk" />
-    <button id="bell"><img src="bell-icon-placeholder.png" alt="bell" /></button>
-    <div id="character-container">
-      <img id="character" src="character-idle.gif" />
-      <div id="speech-bubble">
-        <p id="typed-text"></p>
-        <div id="options"></div>
+  <div class="main-container">
+    <div class="interactive-scene">
+      <!-- Background scene -->
+      <img src="background.png" class="background" alt="Shop background">
+      <img src="desk.png" class="desk" alt="Desk">
+      <img src="bell.png" class="bell" alt="Bell" onclick="triggerInteraction()">
+      <img src="character_idle.gif" class="character" id="character" style="display: none;" alt="Character">
+      <img src="speech.png" class="speech-bubble" id="speech" style="display: none;" alt="Speech">
+      <!-- Add option bubbles -->
+      <div class="options" id="options" style="display: none;">
+        <button>Option 1</button>
+        <button>Option 2</button>
+        <button>Option 3</button>
       </div>
+      <!-- Exit button -->
+      <button class="exit-button" onclick="endInteraction()">×</button>
     </div>
-    <button id="close-btn">X</button>
-  </div>
 
-  <div id="info-panel">
-    <div class="desk-buttons">
-      <button class="info-btn" data-target="personal">Personal Info</button>
-      <button class="info-btn" data-target="offers">Types of Offers</button>
-      <button class="info-btn" data-target="examples">Examples</button>
+    <!-- Info buttons underneath -->
+    <div class="info-buttons">
+      <button>Personal Info</button>
+      <button>Types of Offers</button>
+      <button>Examples</button>
+      <button>Video Example</button>
+      <button onclick="window.location.href='purchase.html'">Go to Purchase Page</button>
     </div>
-    <div id="content-area">
-      <div id="personal" class="content-section">This is personal information about the shop owner.</div>
-      <div id="offers" class="content-section">Here are the different types of offers available.</div>
-      <div id="examples" class="content-section">
-        Example 1<br><img src="example-image-placeholder.png" alt="Example" /><br>
-        Example video:<br><video controls><source src="example-video-placeholder.mp4" type="video/mp4"></video>
-      </div>
-    </div>
-    <button id="purchase-btn">Go to Purchase Page</button>
   </div>
-
-  <audio id="ding-sound" src="ding.mp3" preload="auto"></audio>
-  <script src="script.js"></script>
 </body>
 </html>
