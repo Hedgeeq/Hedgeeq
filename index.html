@@ -1,161 +1,104 @@
+<div class="main-container">
+  <div class="interactive-scene">
+    <img src="background.png" class="background" alt="Shop background">
+    <img src="desk.png" class="desk" alt="Desk">
+    <img src="bell.png" class="bell" alt="Bell" onclick="triggerInteraction()">
+    <img src="character_idle.gif" class="character" id="character" style="display: none;" alt="Character">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Interactive Shop</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="main-container">
-    <div class="interactive-scene">
-      <!-- Background scene -->
-      <img src="background.png" class="background" alt="Shop background">
-      <img src="desk.png" class="desk" alt="Desk">
-      <img src="bell.png" class="bell" alt="Bell" onclick="triggerInteraction()">
-      <img src="character_idle.gif" class="character" id="character" style="display: none;" alt="Character">
-      <img src="speech.png" class="speech-bubble" id="speech" style="display: none;" alt="Speech">
-      <!-- Add option bubbles -->
-      <div class="options" id="options" style="display: none;">
-        <button>Option 1</button>
-        <button>Option 2</button>
-        <button>Option 3</button>
-      </div>
-      <!-- Exit button -->
-      <button class="exit-button" onclick="endInteraction()">×</button>
+    <!-- Speech bubble to the right of character -->
+    <img src="speech.png" class="speech-bubble" id="speech" style="display: none; left: 350px; bottom: 180px;" alt="Speech">
+
+    <!-- Options beside speech -->
+    <div class="options" id="options" style="display: none; left: 670px; bottom: 170px;">
+      <button>Option 1</button>
+      <button>Option 2</button>
+      <button>Option 3</button>
     </div>
 
-    <!-- Info buttons underneath -->
-    <div class="info-buttons">
-      <button>Personal Info</button>
-      <button>Types of Offers</button>
-      <button>Examples</button>
-      <button>Video Example</button>
-      <button onclick="window.location.href='purchase.html'">Go to Purchase Page</button>
+    <!-- Exit button -->
+    <button class="exit-button" onclick="endInteraction()">×</button>
+  </div>
+
+  <!-- Info Buttons -->
+  <div class="info-buttons">
+    <button onclick="showTab('info')">Personal Info</button>
+    <button onclick="showTab('offers')">Types of Offers</button>
+    <button onclick="showTab('examples')">Examples</button>
+  </div>
+
+  <!-- Info Display Box -->
+  <div class="info-display" id="infoDisplay">
+    <div id="infoTab" class="tab-content">
+      <h2>Personal Info</h2>
+      <p>Put your personal shop or contact info here!</p>
+    </div>
+    <div id="offersTab" class="tab-content" style="display: none;">
+      <h2>Types of Offers</h2>
+      <p>Describe different service tiers or art types you offer.</p>
+    </div>
+    <div id="examplesTab" class="tab-content" style="display: none;">
+      <h2>Examples</h2>
+      <img src="example1.png" alt="Example 1" style="max-width: 100%;">
+      <img src="example2.png" alt="Example 2" style="max-width: 100%;">
+      <video controls style="width: 100%; margin-top: 1rem;">
+        <source src="example_video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
-</body>
-<style>body {
-  background: #eaeaea;
-  margin: 0;
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.main-container {
-  margin-top: 2rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  <!-- Purchase Button -->
+  <div class="purchase">
+    <button onclick="window.location.href='purchase.html'">Go to Purchase Page</button>
+  </div>
+</div>
 
-.interactive-scene {
-  position: relative;
-  width: 700px;
-  height: 400px;
-  background: #fff;
-  border: 2px solid #ccc;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.interactive-scene img {
-  position: absolute;
-  max-width: 100%;
-}
-
-.background {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.desk {
-  bottom: 0;
-  width: 100%;
-  height: auto;
-}
-
-.bell {
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  cursor: pointer;
-  width: 40px;
-}
-
-.character {
-  bottom: 120px;
-  left: 60px;
-  width: 120px;
-}
-
-.speech-bubble {
-  right: 200px;
-  bottom: 180px;
-  width: 300px;
-}
-
+<style>
 .options {
   position: absolute;
-  right: 300px;
-  bottom: 100px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.options button {
-  padding: 0.5rem;
-  border-radius: 8px;
-  border: none;
-  background: #eee;
-  cursor: pointer;
+.speech-bubble {
+  position: absolute;
+  width: 300px;
 }
 
-.exit-button {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  border: none;
-  background: #d33;
-  color: white;
-  font-size: 1.2rem;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
+.tab-content {
   display: none;
 }
 
-.info-buttons {
-  margin-top: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+.info-display {
+  margin-top: 1rem;
+  width: 80%;
+  max-width: 700px;
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.info-buttons button {
+.purchase {
+  margin-top: 1rem;
+}
+
+.purchase button {
   padding: 0.75rem 1.5rem;
+  background: #27ae60;
+  color: white;
   border: none;
   border-radius: 8px;
-  background: #4a90e2;
-  color: white;
   cursor: pointer;
   transition: background 0.3s;
 }
 
-.info-buttons button:hover {
-  background: #357ab8;
+.purchase button:hover {
+  background: #1e8449;
 }
 </style>
+
 <script>
 function triggerInteraction() {
   document.getElementById("character").style.display = "block";
@@ -170,5 +113,11 @@ function endInteraction() {
   document.getElementById("options").style.display = "none";
   document.querySelector(".exit-button").style.display = "none";
 }
+
+function showTab(tab) {
+  document.getElementById("infoTab").style.display = tab === "info" ? "block" : "none";
+  document.getElementById("offersTab").style.display = tab === "offers" ? "block" : "none";
+  document.getElementById("examplesTab").style.display = tab === "examples" ? "block" : "none";
+}
 </script>
-</html>
+
